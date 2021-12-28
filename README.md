@@ -19,7 +19,7 @@ The only external dependency used is [`requests`](https://pypi.org/project/reque
 # Testing
 No tests available (at present).
 
-# To-dos
+# To-dos
 - Make output less 'Pro Max' specific.
 - Gather all model numbers.
 - Set up to import different model number files (to allow checking of different products, with the correct output shown).

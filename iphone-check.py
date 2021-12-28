@@ -1,5 +1,6 @@
 import requests
 import time
+import os
 
 class bcolors:
     HEADER = '\033[95m'
@@ -13,7 +14,9 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def getiPhoneData():
-    r = requests.get('https://www.apple.com/uk/shop/pickup-message-recommendations?location=SW19%207BE&product=MLLA3B/A')
+    postcode = os.getenv('POSTCODE')
+
+    r = requests.get('https://www.apple.com/uk/shop/pickup-message-recommendations?location=' + postcode + '&product=MLLA3B/A')
 
     json_data = r.json()
 
@@ -29,7 +32,7 @@ def getiPhoneData():
         "MLL93B/A": "Pro Max 128gb Sierra Blue"
     }
 
-    models_array = ["MLLK3B/A", "MLVE3B/A", "MLLE3B/A", "MLL93B/A", "MLVP3B/A", "MLL93B/A", "MLVF3B/A", "MLLN3B/A", "MLLL3B/A", "MLVK3B/A", "MLVP3B/A"]
+    models_array = ["MLLK3B/A", "MLVE3B/A", "MLLE3B/A", "MLL93B/A", "MLVP3B/A", "MLVF3B/A", "MLLN3B/A", "MLLL3B/A", "MLVK3B/A"]
 
     for store in stores:
         counter = 0
@@ -52,9 +55,6 @@ def getiPhoneData():
             print("No max models in stock.")
             
         print("\n")
-
-    print("https://www.apple.com/uk/shop/buy-iphone/iphone-13-pro/6.7-inch-display-256gb-silver")
-
 
 while True:
     print("Getting data at: " + str(time.strftime("%I:%M:%S %p")))
